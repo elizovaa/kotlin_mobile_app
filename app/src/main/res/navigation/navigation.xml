@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/list_page_fragment">
+
+    <fragment
+        android:id="@+id/main_page_fragment"
+        android:name="com.example.android.medicinechest.mainpage.MainPageFragment"
+        android:label="@string/main_page_fragment"
+        tools:layout="@layout/fragment_main_page">
+<!--        <action-->
+<!--            android:id="@+id/action_mainPageFragment_to_listPageFragment"-->
+<!--            app:destination="@id/list_page_fragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_mainPageFragment_to_addProductPageFragment"-->
+<!--            app:destination="@id/add_product_page_fragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/list_page_fragment"
+        android:name="com.example.android.medicinechest.listpage.ListPageFragment"
+        android:label="@string/list_page_fragment"
+        tools:layout="@layout/fragment_list_page">
+        <action
+            android:id="@+id/action_listPageFragment_to_addProductPageFragment"
+            app:destination="@id/add_product_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+<!--        <argument-->
+<!--            android:name="updateList"-->
+<!--            app:argType="boolean" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_product_page_fragment"
+        android:name="com.example.android.medicinechest.addproductpage.ProductAddPageFragment"
+        android:label="@string/add_product_page_fragment"
+        tools:layout="@layout/fragment_add_product_page">
+        <action
+            android:id="@+id/action_addProductPageFragment_to_listPageFragment"
+            app:destination="@id/list_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/list_page_fragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_addProductPageFragment_to_mainPageFragment"-->
+<!--            app:destination="@id/main_page_fragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_page_fragment"
+        android:name="com.example.android.medicinechest.searchpage.SearchPageFragment"
+        android:label="@string/search_page_fragment"
+        tools:layout="@layout/fragment_search_page">
+        <action
+            android:id="@+id/action_search_page_fragment_to_list_page_fragment"
+            app:destination="@id/list_page_fragment"
+            app:popUpTo="@id/list_page_fragment" />
+    </fragment>
+</navigation>
