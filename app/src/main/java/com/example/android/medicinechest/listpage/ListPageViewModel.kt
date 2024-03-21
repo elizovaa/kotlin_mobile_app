@@ -8,20 +8,28 @@ import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 
 class ListPageViewModel(
+    private val listId: Long,
     private val dao: MedicineChestDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 
-    private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 //    private var tonight = MutableLiveData<SleepNight?>()
 //    private val _products = MutableLiveData<List<Product>?>()
 //    val products: LiveData<List<Product>?>
 //        get() = _products
 
-    val products = dao.getAllProducts()
+    private val _id = MutableLiveData<Long>(listId)
+    private val id: LiveData<Long>
+        get() = _id
+
+    val products = if (id.value != 0L)
+        dao.getProductsOfList(id.value!!)
+    else
+        dao.getAllProducts()
 
     private val _navigateToAdd = MutableLiveData<Boolean?>()
     val navigateToAdd: LiveData<Boolean?>
@@ -65,9 +73,11 @@ class ListPageViewModel(
     }
 
     fun onTurnOnNavigateToAdd() {
-        uiScope.launch {
-            _navigateToAdd.value = true
-        }
+        _navigateToAdd.value = true
+    }
+
+    fun setListId(listId: Long) {
+        _id.value = listId
     }
 
     fun onClear() {

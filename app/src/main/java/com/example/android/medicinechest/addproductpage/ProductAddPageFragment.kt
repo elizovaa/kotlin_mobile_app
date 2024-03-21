@@ -29,33 +29,33 @@ class ProductAddPageFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ProductAddPageViewModel::class.java)
 
-        binding.cancelButton.setOnClickListener {
-            this.findNavController().navigate(
-                ProductAddPageFragmentDirections
-                    .actionAddProductPageFragmentToListPageFragment()
-            )
-        }
+//        binding.cancelButton.setOnClickListener {
+//            this.findNavController().navigate(
+//                ProductAddPageFragmentDirections
+//                    .actionAddProductPageFragmentToListPageFragment()
+//            )
+//        }
 
-        binding.addProductButton.setOnClickListener {
-            try {
-                val name = validateNonEmptyText(binding.nameEditText, "наименование")
-                val type = validateNonEmptyText(binding.typeEditText, "формат выпуска")
-                val amount = Integer.parseInt(validateNonEmptyText(binding.amountEditText, "количество"))
-                val dosage = validateNonEmptyText(binding.dosageEditText, "дозировка")
-                val comment = binding.commentEditText.text.toString()
-                viewModel.prepareForNavigationToAdd(name, type, amount, dosage, comment)
-            } catch (e: RuntimeException) {
-                return@setOnClickListener
-            }
-        }
+//        binding.addProductButton.setOnClickListener {
+//            try {
+//                val name = validateNonEmptyText(binding.nameEditText, "наименование")
+//                val type = validateNonEmptyText(binding.typeEditText, "формат выпуска")
+//                val amount = Integer.parseInt(validateNonEmptyText(binding.amountEditText, "количество"))
+//                val dosage = validateNonEmptyText(binding.dosageEditText, "дозировка")
+//                val comment = binding.commentEditText.text.toString()
+//                viewModel.prepareForNavigationToAdd(name, type, amount, dosage, comment)
+//            } catch (e: RuntimeException) {
+//                return@setOnClickListener
+//            }
+//        }
 
-        viewModel.navigateToAdd.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
-            if (shouldNavigate!!) {
-                this.findNavController().navigate(ProductAddPageFragmentDirections
-                    .actionAddProductPageFragmentToListPageFragment())
-                viewModel.doneNavigating()
-            }
-        })
+//        viewModel.navigateToAdd.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
+//            if (shouldNavigate!!) {
+//                this.findNavController().navigate(ProductAddPageFragmentDirections
+//                    .actionAddProductPageFragmentToListPageFragment())
+//                viewModel.doneNavigating()
+//            }
+//        })
         return binding.root
     }
 

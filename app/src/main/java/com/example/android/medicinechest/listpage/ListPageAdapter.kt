@@ -9,11 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.medicinechest.database.Product
 import com.example.android.medicinechest.R
-//import com.example.android.trackmysleepquality.convertDurationToFormatted
-//import com.example.android.trackmysleepquality.convertNumericQualityToString
-
-
-class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
 
 class ProductViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val res: Resources = itemView.context.resources
@@ -29,11 +24,6 @@ class ProductViewHolder private constructor(itemView: View) : RecyclerView.ViewH
         amount.text = item.amount.toString()
         type.text = item.type
         dosage.text = item.dosage
-        itemView.setOnClickListener{
-            Log.i("...", "нажали на элемент ${item.name}")
-        }
-//        sleepLength.text = convertDurationToFormatted(item.startTimeMillis, item.endTimeMillis, res)
-//        quality.text = convertNumericQualityToString(item.sleepQuality, res)
     }
 
     companion object {

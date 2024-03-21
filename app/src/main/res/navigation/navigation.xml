@@ -11,11 +11,11 @@
         android:name="com.example.android.medicinechest.mainpage.MainPageFragment"
         android:label="@string/main_page_fragment"
         tools:layout="@layout/fragment_main_page">
-<!--        <action-->
-<!--            android:id="@+id/action_mainPageFragment_to_listPageFragment"-->
-<!--            app:destination="@id/list_page_fragment"-->
-<!--            app:enterAnim="@anim/slide_in_right"-->
-<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+        <action
+            android:id="@+id/action_mainPageFragment_to_listPageFragment"
+            app:destination="@id/list_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
 <!--        <action-->
 <!--            android:id="@+id/action_mainPageFragment_to_addProductPageFragment"-->
 <!--            app:destination="@id/add_product_page_fragment"-->
@@ -33,9 +33,9 @@
             app:destination="@id/add_product_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
-<!--        <argument-->
-<!--            android:name="updateList"-->
-<!--            app:argType="boolean" />-->
+        <argument
+            android:name="listId"
+            app:argType="long" />
     </fragment>
 
     <fragment

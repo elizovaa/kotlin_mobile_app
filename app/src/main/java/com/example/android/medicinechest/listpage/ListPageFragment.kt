@@ -26,10 +26,10 @@ class ListPageFragment : Fragment() {
         val binding: FragmentListPageBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_list_page, container, false)
 
-//        val args = ListPageFragmentArgs.fromBundle(requireArguments())
+        val args = ListPageFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
         val dao = MedicineChestDatabase.getInstance(application).getMedicineChestDatabaseDao()
-        val viewModelFactory = ListPageViewModelFactory(dao, application)
+        val viewModelFactory = ListPageViewModelFactory(args.listId, dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ListPageViewModel::class.java)
         setHasOptionsMenu(true)
@@ -42,9 +42,9 @@ class ListPageFragment : Fragment() {
                 adapter.data = products
         })
 
-        binding.addButton.setOnClickListener {
-            viewModel.onTurnOnNavigateToAdd()
-        }
+//        binding.addButton.setOnClickListener {
+//            viewModel.onTurnOnNavigateToAdd()
+//        }
 
         binding.clearButton.setOnClickListener {
             viewModel.onClear()
@@ -59,14 +59,14 @@ class ListPageFragment : Fragment() {
 //        binding.clearButton.setOnClickListener {
 //            viewModel.onClear()
 //        }
-        viewModel.navigateToAdd.observe(viewLifecycleOwner, Observer { shouldNavigation ->
-            if (shouldNavigation!!) {
-                this.findNavController().navigate(
-                    ListPageFragmentDirections
-                        .actionListPageFragmentToAddProductPageFragment())
-                viewModel.doneNavigating()
-            }
-        })
+//        viewModel.navigateToAdd.observe(viewLifecycleOwner, Observer { shouldNavigation ->
+//            if (shouldNavigation!!) {
+//                this.findNavController().navigate(
+//                    ListPageFragmentDirections
+//                        .actionListPageFragmentToAddProductPageFragment())
+//                viewModel.doneNavigating()
+//            }
+//        })
 
 //        viewModel.startButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
 //            binding.startButton.isEnabled = visible

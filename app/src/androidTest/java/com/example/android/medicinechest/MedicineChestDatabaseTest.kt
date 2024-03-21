@@ -48,7 +48,7 @@ class MedicineChestDatabaseTest {
         val idList = dao.insert(list)
         val refs = InventoryProductCrossRef(listId = idList, productId = idProduct)
         dao.insert(refs)
-        val products = dao.findProductsOfList("my_list")
+        val products = dao.getProductsOfList("my_list")
         assertEquals(products != null, true)
         assertEquals("my_product", products.get(0).name)
         println()

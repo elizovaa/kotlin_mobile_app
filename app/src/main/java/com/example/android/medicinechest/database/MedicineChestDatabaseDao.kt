@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Transaction
 import androidx.room.Update
 
 @Dao
@@ -42,22 +41,11 @@ interface MedicineChestDatabaseDao {
     @Query("SELECT * FROM list_table ORDER BY list_id DESC")
     fun getAllLists(): LiveData<List<Inventory>>
 
-    @Query("SELECT * FROM product_table ORDER BY product_id DESC")
-    fun getAllProducts2(): List<Product>
-
-//    @Transaction
-//    @Query("SELECT * FROM list_table")
-//    fun getListWithProducts(): List<InventoryWithProducts>
-//
-//    @Transaction
-//    @Query("SELECT * FROM product_table")
-//    fun getProductWithLists(): List<ProductWithInventories>
-
     @Query(
         "SELECT product_table.product_id, product_table.name, product_table.type, product_table.amount, product_table.dosage, product_table.comment FROM product_table " +
                 "INNER JOIN product_list_table ON product_table.product_id = product_list_table.product_id " +
                 "INNER JOIN list_table ON product_list_table.list_id = list_table.list_id " +
-                "WHERE list_table.name = :listName"
+                "WHERE list_table.list_id = :listId"
     )
-    fun findProductsOfList(listName: String): List<Product>
+    fun getProductsOfList(listId: Long): LiveData<List<Product>>
 }

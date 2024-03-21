@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 
 class ListPageViewModelFactory(
-    //private val updateList: Boolean,
+    private val listId: Long,
     private val dao: MedicineChestDatabaseDao,
     private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ListPageViewModel::class.java)) {
-            return ListPageViewModel(dao, application) as T
+            return ListPageViewModel(listId, dao, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

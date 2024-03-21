@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.medicinechest.R
+import com.example.android.medicinechest.database.Inventory
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import com.example.android.medicinechest.databinding.FragmentMainPageBinding
 import com.example.android.medicinechest.listpage.ListPageAdapter
@@ -35,26 +37,35 @@ class MainPageFragment : Fragment() {
         setHasOptionsMenu(true)
 
         val adapter = MainPageAdapter()
+        val it = this
+        adapter.setOnClickListener(object :
+            OnClickListener {
+            override fun onClick(position: Int, model: Inventory) {
+                it.findNavController().navigate(
+                    MainPageFragmentDirections
+                        .actionMainPageFragmentToListPageFragment(model.listId)
+                )
+            }
+        })
         binding.listList.adapter = adapter
 
         viewModel.lists.observe(viewLifecycleOwner, Observer { lists ->
             if (lists != null)
                 adapter.data = lists
         })
-//
-//        binding.allProductsButton.setOnClickListener {
-//            this.findNavController().navigate(
-//                    MainPageFragmentDirections
-//                        .actionMainPageFragmentToListPageFragment())
-//        }
-//
+
+        binding.allProductsButton.setOnClickListener {
+            this.findNavController().navigate(
+                    MainPageFragmentDirections
+                        .actionMainPageFragmentToListPageFragment(0))
+        }
+
 //        binding.addProductButton.setOnClickListener {
 //            this.findNavController().navigate(
 //                MainPageFragmentDirections
 //                    .actionMainPageFragmentToAddProductPageFragment()
 //            )
 //        }
-        Log.i("MainPage", "start")
 //        binding.stopButton.setOnClickListener {
 //            viewModel.onStopTracking()
 //        }
