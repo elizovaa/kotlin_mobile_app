@@ -24,7 +24,7 @@ class ProductViewHolder private constructor(itemView: View) : RecyclerView.ViewH
     private val dosage: TextView = itemView.findViewById(R.id.dosage)
 
     fun bind(item: Product) {
-        id.text = item.id.toString()
+        id.text = item.productId.toString()
         name.text = item.name
         amount.text = item.amount.toString()
         type.text = item.type

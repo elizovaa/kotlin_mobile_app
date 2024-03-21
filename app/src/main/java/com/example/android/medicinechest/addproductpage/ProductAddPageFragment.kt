@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.R
-import com.example.android.medicinechest.database.ProductDatabase
+import com.example.android.medicinechest.database.MedicineChestDatabase
 import androidx.navigation.fragment.findNavController
 import com.example.android.medicinechest.databinding.FragmentAddProductPageBinding
 
@@ -24,7 +24,7 @@ class ProductAddPageFragment : Fragment() {
             inflater, R.layout.fragment_add_product_page, container, false)
 
         val application = requireNotNull(this.activity).application
-        val dao = ProductDatabase.getInstance(application).getProductDatabaseDao()
+        val dao = MedicineChestDatabase.getInstance(application).getMedicineChestDatabaseDao()
         val viewModelFactory = ProductAddPageViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ProductAddPageViewModel::class.java)

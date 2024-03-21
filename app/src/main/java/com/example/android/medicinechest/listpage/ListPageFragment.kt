@@ -1,7 +1,6 @@
 package com.example.android.medicinechest.listpage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -12,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.R
-import com.example.android.medicinechest.database.ProductDatabase
+import com.example.android.medicinechest.database.MedicineChestDatabase
 import com.example.android.medicinechest.databinding.FragmentListPageBinding
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -29,7 +28,7 @@ class ListPageFragment : Fragment() {
 
 //        val args = ListPageFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
-        val dao = ProductDatabase.getInstance(application).getProductDatabaseDao()
+        val dao = MedicineChestDatabase.getInstance(application).getMedicineChestDatabaseDao()
         val viewModelFactory = ListPageViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ListPageViewModel::class.java)
@@ -84,7 +83,7 @@ class ListPageFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.overflow_menu, menu)
+        inflater.inflate(R.menu.list_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

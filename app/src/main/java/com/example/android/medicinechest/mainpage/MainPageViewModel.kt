@@ -2,18 +2,19 @@ package com.example.android.medicinechest.mainpage
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.android.medicinechest.database.Product
-import com.example.android.medicinechest.database.ProductDatabaseDao
+import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 
 class MainPageViewModel(
-    private val dao: ProductDatabaseDao,
+    private val dao: MedicineChestDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
+
+    val lists = dao.getAllLists()
 
 //    private var tonight = MutableLiveData<SleepNight?>()
 //    val nights = dao.getAllNights()

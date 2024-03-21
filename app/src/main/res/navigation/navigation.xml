@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/list_page_fragment">
+    app:startDestination="@id/main_page_fragment">
 
     <fragment
         android:id="@+id/main_page_fragment"
@@ -54,6 +54,19 @@
 <!--            app:destination="@id/main_page_fragment"-->
 <!--            app:enterAnim="@anim/slide_in_right"-->
 <!--            app:popEnterAnim="@anim/slide_in_right" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_list_page_fragment"
+        android:name="com.example.android.medicinechest.addlistpage.ListAddPageFragment"
+        android:label="@string/add_product_page_fragment"
+        tools:layout="@layout/fragment_add_list_page">
+        <action
+            android:id="@+id/action_addListPageFragment_to_mainPageFragment"
+            app:destination="@id/main_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/main_page_fragment" />
     </fragment>
 
     <fragment

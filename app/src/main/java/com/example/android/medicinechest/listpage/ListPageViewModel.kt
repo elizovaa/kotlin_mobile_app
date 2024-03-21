@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.android.medicinechest.database.ProductDatabaseDao
+import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 
 class ListPageViewModel(
-    private val dao: ProductDatabaseDao,
+    private val dao: MedicineChestDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
