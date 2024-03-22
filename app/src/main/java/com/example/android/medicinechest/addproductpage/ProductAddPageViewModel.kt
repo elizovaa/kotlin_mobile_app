@@ -17,6 +17,8 @@ class ProductAddPageViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
+    var product: Product? = null
+
     private val _navigateToAdd = MutableLiveData<Boolean?>()
     val navigateToAdd: LiveData<Boolean?>
         get() = _navigateToAdd
@@ -37,6 +39,7 @@ class ProductAddPageViewModel(
                     comment = comment
                 )
                 dao.insert(insertProject)
+                product = insertProject
             }
             _navigateToAdd.value = true
         }

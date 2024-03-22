@@ -24,4 +24,15 @@ data class Product (
 
     @ColumnInfo(name = "comment")
     val comment: String = ""
-)
+) {
+    override fun toString(): String {
+        return listOf<String>(
+            productId.toString(),
+            name,
+            type,
+            amount.toString(),
+            dosage,
+            comment
+        ).joinToString(separator = "\n")
+    }
+}

@@ -60,26 +60,9 @@ class MainPageFragment : Fragment() {
                         .actionMainPageFragmentToListPageFragment(0))
         }
 
-//        binding.addProductButton.setOnClickListener {
-//            this.findNavController().navigate(
-//                MainPageFragmentDirections
-//                    .actionMainPageFragmentToAddProductPageFragment()
-//            )
-//        }
-//        binding.stopButton.setOnClickListener {
-//            viewModel.onStopTracking()
-//        }
 //        binding.clearButton.setOnClickListener {
 //            viewModel.onClear()
 //        }
-//        viewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
-//            if (night != null) {
-//                this.findNavController().navigate(
-//                    SleepTrackerFragmentDirections
-//                        .actionSleepTrackerFragmentToSleepQualityFragment(night.nightId))
-//                viewModel.doneNavigating()
-//            }
-//        })
 //        viewModel.startButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
 //            binding.startButton.isEnabled = visible
 //        })

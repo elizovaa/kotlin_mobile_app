@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/add_product_page_fragment"
+        android:title="Редактировать" />
+<!--    <item-->
+<!--        android:id="@+id/add_list_page_fragment"-->
+<!--        android:title="Удалить" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/add_list_page_fragment"-->
+<!--        android:title="Добавить в список" />-->
+
+</menu>

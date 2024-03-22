@@ -28,14 +28,14 @@
         android:name="com.example.android.medicinechest.listpage.ListPageFragment"
         android:label="@string/list_page_fragment"
         tools:layout="@layout/fragment_list_page">
-        <action
-            android:id="@+id/action_listPageFragment_to_addProductPageFragment"
-            app:destination="@id/add_product_page_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_right" />
         <argument
             android:name="listId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_listPageFragment_to_productPageFragment"
+            app:destination="@id/product_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 
     <fragment
@@ -44,16 +44,62 @@
         android:label="@string/add_product_page_fragment"
         tools:layout="@layout/fragment_add_product_page">
         <action
-            android:id="@+id/action_addProductPageFragment_to_listPageFragment"
-            app:destination="@id/list_page_fragment"
+            android:id="@+id/action_addProductPageFragment_to_productPageFragment"
+            app:destination="@id/product_page_fragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/list_page_fragment" />
-<!--        <action-->
-<!--            android:id="@+id/action_addProductPageFragment_to_mainPageFragment"-->
-<!--            app:destination="@id/main_page_fragment"-->
-<!--            app:enterAnim="@anim/slide_in_right"-->
-<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+            app:popUpTo="@id/main_page_fragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_addProductPageFragment_to_mainPageFragment"
+            app:destination="@id/main_page_fragment"
+            app:enterAnim="@anim/slide_in_right" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+        <argument
+            android:name="dosage"
+            app:argType="string" />
+        <argument
+            android:name="comment"
+            app:argType="string" />
+        <!--        <argument-->
+<!--            android:name="product"-->
+<!--            app:argType="Product" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_page_fragment"
+        android:name="com.example.android.medicinechest.productpage.ProductPageFragment"
+        android:label="@string/add_product_page_fragment"
+        tools:layout="@layout/fragment_product_page">
+        <action
+            android:id="@+id/action_productPageFragment_to_addProductPageFragment"
+            app:destination="@id/add_product_page_fragment"
+            app:enterAnim="@anim/slide_in_right" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+        <argument
+            android:name="dosage"
+            app:argType="string" />
+        <argument
+            android:name="comment"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="long" />
     </fragment>
 
     <fragment
@@ -73,10 +119,5 @@
         android:id="@+id/search_page_fragment"
         android:name="com.example.android.medicinechest.searchpage.SearchPageFragment"
         android:label="@string/search_page_fragment"
-        tools:layout="@layout/fragment_search_page">
-        <action
-            android:id="@+id/action_search_page_fragment_to_list_page_fragment"
-            app:destination="@id/list_page_fragment"
-            app:popUpTo="@id/list_page_fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search_page"/>
 </navigation>

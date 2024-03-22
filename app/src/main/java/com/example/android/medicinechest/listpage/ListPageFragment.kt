@@ -17,6 +17,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.android.medicinechest.database.Inventory
+import com.example.android.medicinechest.database.Product
+import com.example.android.medicinechest.mainpage.MainPageFragmentDirections
+import com.example.android.medicinechest.listpage.OnClickListener
 
 class ListPageFragment : Fragment() {
     private lateinit var viewModel: ListPageViewModel
@@ -35,6 +39,23 @@ class ListPageFragment : Fragment() {
         setHasOptionsMenu(true)
 
         val adapter = ListPageAdapter()
+        val it = this
+        adapter.setOnClickListener(object :
+            OnClickListener {
+            override fun onClick(position: Int, model: Product) {
+                it.findNavController().navigate(
+                    ListPageFragmentDirections
+                        .actionListPageFragmentToProductPageFragment(
+                            model.name,
+                            model.type,
+                            model.amount,
+                            model.dosage,
+                            model.comment,
+                            model.productId
+                        )
+                )
+            }
+        })
         binding.productList.adapter = adapter
 
         viewModel.products.observe(viewLifecycleOwner, Observer { products ->
@@ -46,9 +67,9 @@ class ListPageFragment : Fragment() {
 //            viewModel.onTurnOnNavigateToAdd()
 //        }
 
-        binding.clearButton.setOnClickListener {
-            viewModel.onClear()
-        }
+//        binding.clearButton.setOnClickListener {
+//            viewModel.onClear()
+//        }
 //
 //        binding.startButton.setOnClickListener {
 //            viewModel.onStartTracking()

@@ -76,10 +76,6 @@ class ListPageViewModel(
         _navigateToAdd.value = true
     }
 
-    fun setListId(listId: Long) {
-        _id.value = listId
-    }
-
     fun onClear() {
         uiScope.launch {
             withContext(Dispatchers.IO) {
