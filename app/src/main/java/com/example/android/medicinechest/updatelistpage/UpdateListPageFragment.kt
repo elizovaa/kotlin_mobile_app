@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +11,6 @@ import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.android.medicinechest.database.ProductCheck
 import com.example.android.medicinechest.databinding.FragmentUpdateListPageBinding
 
 class UpdateListPageFragment : Fragment() {

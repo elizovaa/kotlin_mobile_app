@@ -57,9 +57,14 @@ interface MedicineChestDatabaseDao {
     fun getProductsOfList(listId: Long): LiveData<List<Product>>
 
     @Query(
-        "SELECT product_id AS productId, name AS name, EXISTS(SELECT * FROM product_list_table WHERE list_id = :listId AND product_id = product_table.product_id) AS isChecked FROM product_table"
+        "SELECT product_id AS id, name AS name, EXISTS(SELECT * FROM product_list_table WHERE list_id = :listId AND product_id = product_table.product_id) AS isChecked FROM product_table"
     )
-    fun getProductChecksOfList(listId: Long): LiveData<List<ProductCheck>>
+    fun getProductChecksOfList(listId: Long): LiveData<List<ObjectCheck>>
+
+    @Query(
+        "SELECT list_id AS id, name AS name, EXISTS(SELECT * FROM product_list_table WHERE list_id = list_table.list_id AND product_id = :productId) AS isChecked FROM list_table"
+    )
+    fun getListChecksOfProduct(productId: Long): LiveData<List<ObjectCheck>>
 }
 
-data class ProductCheck(val productId: Long, val name: String, val isChecked: Boolean)
+data class ObjectCheck(val id: Long, val name: String, val isChecked: Boolean)

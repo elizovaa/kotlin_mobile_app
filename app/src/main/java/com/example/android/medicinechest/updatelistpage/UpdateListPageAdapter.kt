@@ -3,19 +3,18 @@ package com.example.android.medicinechest.updatelistpage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.medicinechest.R
-import com.example.android.medicinechest.database.ProductCheck
+import com.example.android.medicinechest.database.ObjectCheck
 
 class ProductViewHolder(val button: RelativeLayout) : RecyclerView.ViewHolder(button)
 
 
 class UpdateListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
 
-    var data = listOf<ProductCheck>()
+    var data = listOf<ObjectCheck>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -32,10 +31,10 @@ class UpdateListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
         checkbox.isChecked = item.isChecked
 
         checkbox.setOnClickListener {
-            if (!checks.contains(item.productId))
-                checks[item.productId] = checkbox.isChecked
+            if (!checks.contains(item.id))
+                checks[item.id] = checkbox.isChecked
             else
-                checks.remove(item.productId)
+                checks.remove(item.id)
         }
     }
 

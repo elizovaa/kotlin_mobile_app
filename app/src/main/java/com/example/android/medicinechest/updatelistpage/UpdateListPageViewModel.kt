@@ -34,10 +34,10 @@ class UpdateListPageViewModel(
             withContext(Dispatchers.IO) {
                 for (productCheck in products.value!!) {
                     val oldCheck = productCheck.isChecked
-                    val newCheck = checks[productCheck.productId]
+                    val newCheck = checks[productCheck.id]
                     if (newCheck == null)
                         continue
-                    val ref = InventoryProductCrossRef(listId, productCheck.productId)
+                    val ref = InventoryProductCrossRef(listId, productCheck.id)
                     if (!oldCheck && newCheck)
                         dao.insert(ref)
                     if (oldCheck && !newCheck)

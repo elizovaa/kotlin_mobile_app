@@ -105,7 +105,9 @@ class ListPageFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.list_menu, menu)
+        val args = ListPageFragmentArgs.fromBundle(requireArguments())
+        if (args.listId != 0L)
+            inflater.inflate(R.menu.list_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
