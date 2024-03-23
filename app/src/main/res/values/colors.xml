@@ -15,12 +15,12 @@
   -->
 
 <resources>
+    <color name="text_color">#000000</color>
+    <color name="colorPrimary">#0046c7</color>
+<!--    <color name="colorPrimaryDark">#d0e3f7</color>-->
+    <color name="colorAccent">#0046c7</color>
 
-    <color name="colorPrimary">#6ab343</color>
-    <color name="colorPrimaryDark">#388310</color>
-    <color name="colorAccent">#6ab343</color>
-
-    <color name="green_color">#388310</color>
     <color name="white_text_color">#f0f0f0</color>
+    <color name="button_color">#0046c7</color> <!-- 1b98f7 -->
 
 </resources>

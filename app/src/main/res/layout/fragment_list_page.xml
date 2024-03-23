@@ -18,7 +18,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="40dp"
             android:text="@string/list_page_title"
-            android:textColor="#c92435"
+            android:textColor="@color/text_color"
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView

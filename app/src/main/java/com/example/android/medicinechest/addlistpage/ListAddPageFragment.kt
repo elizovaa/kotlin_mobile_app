@@ -30,13 +30,6 @@ class ListAddPageFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ListAddPageViewModel::class.java)
 
-        binding.cancelButton.setOnClickListener {
-            this.findNavController().navigate(
-                ListAddPageFragmentDirections
-                    .actionAddListPageFragmentToMainPageFragment()
-            )
-        }
-
         binding.addButton.setOnClickListener {
             try {
                 val name = validateNonEmptyText(binding.nameEditText, "название")

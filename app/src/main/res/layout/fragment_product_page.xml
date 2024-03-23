@@ -18,7 +18,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="60dp"
             android:text="Препарат"
-            android:textColor="#c92435"
+            android:textColor="@color/text_color"
             android:textSize="24dp" />
 
         <TextView
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Id"
+            android:textColor="@color/text_color"
             android:textSize="18dp"/>
 
         <TextView
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Формат выпуска"
+            android:textColor="@color/text_color"
             android:textSize="18dp"/>
 
         <TextView
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Количество"
+            android:textColor="@color/text_color"
             android:textSize="18dp"/>
 
         <TextView
@@ -51,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Дозировка"
+            android:textColor="@color/text_color"
             android:textSize="18dp"/>
 
         <TextView
@@ -58,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Комментарий"
+            android:textColor="@color/text_color"
             android:textSize="18dp"/>
 
     </LinearLayout>

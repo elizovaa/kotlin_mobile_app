@@ -88,29 +88,19 @@ class MainPageFragment : Fragment() {
             R.id.add_product_page_fragment -> {
                 requireView().findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToAddProductPageFragment(
-                            0L,
-                            false,
-                            "",
-                            "",
-                            0,
-                            "",
-                            ""
-                        ))
+                        .actionMainPageFragmentToAddProductPageFragment(0L, false, "", "", 0, "", ""))
                 return true
             }
             R.id.add_list_page_fragment -> {
                 requireView().findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToAddProductPageFragment(
-                            0L,
-                            false,
-                            "",
-                            "",
-                            0,
-                            "",
-                            ""
-                        ))
+                        .actionMainPageFragmentToAddListPageFragment())
+                return true
+            }
+            R.id.search_page_fragment -> {
+                requireView().findNavController().navigate(
+                    MainPageFragmentDirections
+                        .actionMainPageFragmentToSearchPageFragment())
                 return true
             }
             else -> {
@@ -118,7 +108,5 @@ class MainPageFragment : Fragment() {
             }
         }
         return true
-//        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-//                || super.onOptionsItemSelected(item)
     }
 }

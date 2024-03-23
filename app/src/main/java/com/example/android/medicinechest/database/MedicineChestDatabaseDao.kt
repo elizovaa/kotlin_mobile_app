@@ -18,6 +18,9 @@ interface MedicineChestDatabaseDao {
     @Insert
     fun insert(inventoryProductCrossRef: InventoryProductCrossRef): Long
 
+    @Delete
+    fun delete(inventoryProductCrossRef: InventoryProductCrossRef)
+
     @Update
     fun update(product: Product)
 
@@ -52,4 +55,11 @@ interface MedicineChestDatabaseDao {
                 "WHERE list_table.list_id = :listId"
     )
     fun getProductsOfList(listId: Long): LiveData<List<Product>>
+
+    @Query(
+        "SELECT product_id AS productId, name AS name, EXISTS(SELECT * FROM product_list_table WHERE list_id = :listId AND product_id = product_table.product_id) AS isChecked FROM product_table"
+    )
+    fun getProductChecksOfList(listId: Long): LiveData<List<ProductCheck>>
 }
+
+data class ProductCheck(val productId: Long, val name: String, val isChecked: Boolean)

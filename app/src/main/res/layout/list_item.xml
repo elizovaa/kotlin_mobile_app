@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#c92435"
+        android:textColor="@color/colorPrimary"
         android:text="Название" />
 
     <LinearLayout

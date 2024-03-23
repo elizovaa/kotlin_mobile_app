@@ -109,7 +109,17 @@ class ListPageFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-                || super.onOptionsItemSelected(item)
+        val args = ListPageFragmentArgs.fromBundle(requireArguments())
+        when(item.itemId) {
+            R.id.update_list_page_fragment -> {
+                requireView().findNavController().navigate(
+                    ListPageFragmentDirections
+                        .actionListPageFragmentToUpdateListPageFragment(args.listId, args.name))
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
     }
 }

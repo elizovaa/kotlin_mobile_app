@@ -9,25 +9,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        tools:context=".searchpage.SearchPageFragment">
+        tools:context=".updatelistpage.UpdateListPageFragment">
 
-        <EditText
-            android:id="@+id/search_text"
+        <TextView
+            android:id="@+id/list_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Введите наименование"
-            android:inputType="text"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/list_page_title"
             android:textColor="@color/text_color"
-            android:layout_marginBottom="60dp"/>
+            android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+        <Button
+            android:id="@+id/save_list_button"
+            style="@style/Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Сохранить" />
 
     </LinearLayout>
 </layout>

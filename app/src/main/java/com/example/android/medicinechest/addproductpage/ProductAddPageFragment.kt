@@ -39,13 +39,6 @@ class ProductAddPageFragment : Fragment() {
             binding.commentEditText.text.insert(0,  args.comment)
         }
 
-        binding.cancelButton.setOnClickListener {
-            this.findNavController().navigate(
-                ProductAddPageFragmentDirections
-                    .actionAddProductPageFragmentToMainPageFragment()
-            )
-        }
-
         binding.addProductButton.setOnClickListener {
             try {
                 val name = validateNonEmptyText(binding.nameEditText, "наименование")

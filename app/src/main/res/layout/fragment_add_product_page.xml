@@ -4,44 +4,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         tools:context=".addproductpage.ProductAddPageFragment">
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin"
-            android:fontFamily="sans-serif"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="60dp"
             android:text="Добавление препарата"
-            android:textSize="@dimen/title_text_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/text_color"
+            android:textSize="24dp" />
 
         <EditText
             android:id="@+id/name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Введите наименование"
-            android:inputType="text"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="64dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title_text"/>
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/type_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Введите формат выпуска"
-            android:inputType="text"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/name_edit_text"/>
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/amount_edit_text"
@@ -49,10 +47,9 @@
             android:layout_height="wrap_content"
             android:hint="Введите количество"
             android:inputType="number"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/type_edit_text"/>
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"/>
 
         <EditText
             android:id="@+id/dosage_edit_text"
@@ -60,10 +57,9 @@
             android:layout_height="wrap_content"
             android:hint="Введите дозировку"
             android:inputType="text"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/amount_edit_text"/>
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"/>
 
         <EditText
             android:id="@+id/comment_edit_text"
@@ -71,33 +67,17 @@
             android:layout_height="wrap_content"
             android:hint="Введите комментарий"
             android:inputType="text"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/dosage_edit_text"/>
-
-        <Button
-            android:id="@+id/cancel_button"
-            style="@style/SleepButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:text="Отменить"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"/>
 
         <Button
             android:id="@+id/add_product_button"
-            style="@style/SleepButtons"
+            style="@style/Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Добавить"
-            android:layout_marginEnd="64dp"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cancel_button" />
+            android:layout_marginTop="60dp"
+            android:text="Добавить" />
 
         <!--        <Button-->
         <!--            android:id="@+id/stop_button"-->
@@ -124,5 +104,5 @@
         <!--            app:layout_constraintEnd_toEndOf="parent"-->
         <!--            app:layout_constraintStart_toStartOf="parent" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>
