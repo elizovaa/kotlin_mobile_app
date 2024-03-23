@@ -7,11 +7,12 @@ import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import com.example.android.medicinechest.database.Product
 
 class ProductPageViewModelFactory(
+    private val id: Long,
     private val dao: MedicineChestDatabaseDao,
     private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProductPageViewModel::class.java)) {
-            return ProductPageViewModel(dao, application) as T
+            return ProductPageViewModel(id, dao, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

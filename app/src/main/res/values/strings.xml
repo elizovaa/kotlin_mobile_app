@@ -16,6 +16,7 @@
 
 <resources>
     <string name="main_page_title">Мобильная аптечка</string>
+
     <string name="main_page_fragment">MainPageFragment</string>
     <string name="list_page_fragment">ListPageFragment</string>
     <string name="add_product_page_fragment">AddProductPageFragment</string>

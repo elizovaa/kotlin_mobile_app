@@ -20,6 +20,8 @@ import com.example.android.medicinechest.database.Inventory
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import com.example.android.medicinechest.databinding.FragmentMainPageBinding
 import com.example.android.medicinechest.listpage.ListPageAdapter
+import com.example.android.medicinechest.productpage.ProductPageFragmentArgs
+import com.example.android.medicinechest.productpage.ProductPageFragmentDirections
 
 class MainPageFragment : Fragment() {
     private lateinit var viewModel: MainPageViewModel
@@ -43,7 +45,7 @@ class MainPageFragment : Fragment() {
             override fun onClick(position: Int, model: Inventory) {
                 it.findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToListPageFragment(model.listId)
+                        .actionMainPageFragmentToListPageFragment(model.listId, model.name)
                 )
             }
         })
@@ -57,7 +59,7 @@ class MainPageFragment : Fragment() {
         binding.allProductsButton.setOnClickListener {
             this.findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToListPageFragment(0))
+                        .actionMainPageFragmentToListPageFragment(0, "Все препараты"))
         }
 
 //        binding.clearButton.setOnClickListener {
@@ -82,7 +84,41 @@ class MainPageFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-                || super.onOptionsItemSelected(item)
+        when(item.itemId) {
+            R.id.add_product_page_fragment -> {
+                requireView().findNavController().navigate(
+                    MainPageFragmentDirections
+                        .actionMainPageFragmentToAddProductPageFragment(
+                            0L,
+                            false,
+                            "",
+                            "",
+                            0,
+                            "",
+                            ""
+                        ))
+                return true
+            }
+            R.id.add_list_page_fragment -> {
+                requireView().findNavController().navigate(
+                    MainPageFragmentDirections
+                        .actionMainPageFragmentToAddProductPageFragment(
+                            0L,
+                            false,
+                            "",
+                            "",
+                            0,
+                            "",
+                            ""
+                        ))
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+        return true
+//        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+//                || super.onOptionsItemSelected(item)
     }
 }

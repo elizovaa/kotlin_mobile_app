@@ -13,9 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import androidx.navigation.fragment.findNavController
+import com.example.android.medicinechest.database.Product
 import com.example.android.medicinechest.databinding.FragmentAddProductPageBinding
-import com.example.android.medicinechest.listpage.ListPageFragmentArgs
-import com.example.android.medicinechest.productpage.ProductPageFragmentArgs
 
 class ProductAddPageFragment : Fragment() {
     private lateinit var viewModel: ProductAddPageViewModel
@@ -32,11 +31,13 @@ class ProductAddPageFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ProductAddPageViewModel::class.java)
 
-        binding.nameEditText.text.insert(0,  args.name)
-        binding.typeEditText.text.insert(0,  args.type)
-        binding.amountEditText.text.insert(0,  args.amount.toString())
-        binding.dosageEditText.text.insert(0,  args.dosage)
-        binding.commentEditText.text.insert(0,  args.comment)
+        if (args.update) {
+            binding.nameEditText.text.insert(0,  args.name)
+            binding.typeEditText.text.insert(0,  args.type)
+            binding.amountEditText.text.insert(0,  args.amount.toString())
+            binding.dosageEditText.text.insert(0,  args.dosage)
+            binding.commentEditText.text.insert(0,  args.comment)
+        }
 
         binding.cancelButton.setOnClickListener {
             this.findNavController().navigate(
@@ -52,23 +53,32 @@ class ProductAddPageFragment : Fragment() {
                 val amount = Integer.parseInt(validateNonEmptyText(binding.amountEditText, "количество"))
                 val dosage = validateNonEmptyText(binding.dosageEditText, "дозировка")
                 val comment = binding.commentEditText.text.toString()
-                viewModel.prepareForNavigationToAdd(name, type, amount, dosage, comment)
+                val insertProduct = Product(
+                    productId = args.id,
+                    name = name,
+                    type = type,
+                    amount = amount,
+                    dosage = dosage,
+                    comment = comment
+                )
+                viewModel.prepareForNavigationToProduct(insertProduct, args.update)
             } catch (e: RuntimeException) {
                 return@setOnClickListener
             }
         }
 
-        viewModel.navigateToAdd.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
+        viewModel.navigateToProduct.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
             if (shouldNavigate!!) {
-                val product = viewModel.product!!
+                Log.i("ProductAddPageFragment", viewModel.product.toString())
+                val product = viewModel.product
                 this.findNavController().navigate(ProductAddPageFragmentDirections
                     .actionAddProductPageFragmentToProductPageFragment(
+                        product.productId,
                         product.name,
                         product.type,
                         product.amount,
                         product.dosage,
-                        product.comment,
-                        product.productId
+                        product.comment
                     ))
                 viewModel.doneNavigating()
             }
@@ -84,14 +94,4 @@ class ProductAddPageFragment : Fragment() {
         }
         return editText.text.toString()
     }
-
-//    private fun validateIntegerText(editText: EditText, nameForError: String): Boolean {
-//        try {
-//            Integer.parseInt(editText.text.toString())
-//        } catch (e: NumberFormatException) {
-//            editText.error = "Поле $nameForError должно содержать целое число"
-//            return false
-//        }
-//        return true
-//    }
 }

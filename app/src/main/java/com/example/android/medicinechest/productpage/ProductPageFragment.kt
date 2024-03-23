@@ -35,17 +35,17 @@ class ProductPageFragment : Fragment() {
         val args = ProductPageFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
         val dao = MedicineChestDatabase.getInstance(application).getMedicineChestDatabaseDao()
-        val viewModelFactory = ProductPageViewModelFactory(dao, application)
+        val viewModelFactory = ProductPageViewModelFactory(args.id, dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ProductPageViewModel::class.java)
         setHasOptionsMenu(true)
 
-        binding.nameText.text = args.name
-        binding.typeText.text = args.type
-        binding.amountText.text = args.amount.toString()
-        binding.dosageText.text = args.dosage
-        binding.commentText.text = args.comment
-        binding.idText.text = args.id.toString()
+        binding.name.text = args.name
+        binding.id.text = "Идентификатор: ${args.id}"
+        binding.type.text = "Формат выпуска: ${args.type}"
+        binding.amount.text = "Количество: ${args.amount}"
+        binding.dosage.text = "Дозировка: ${args.dosage}"
+        binding.comment.text = "${args.comment}"
         return binding.root
     }
 
@@ -61,6 +61,8 @@ class ProductPageFragment : Fragment() {
                 requireView().findNavController().navigate(
                     ProductPageFragmentDirections
                         .actionProductPageFragmentToAddProductPageFragment(
+                            args.id,
+                            true,
                             args.name,
                             args.type,
                             args.amount,
@@ -69,12 +71,18 @@ class ProductPageFragment : Fragment() {
                         ))
                 return true
             }
+            R.id.main_page_fragment -> {
+                viewModel.delete(args.id)
+                requireView().findNavController().navigate(
+                    ProductPageFragmentDirections
+                        .actionProductPageFragmentToMainPageFragment())
+                return true
+            }
             else -> {
                 return super.onOptionsItemSelected(item)
             }
         }
         return true
-        //TO DO: реализовать передачу параметров странице добавления
 //        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
 //                || super.onOptionsItemSelected(item)
     }

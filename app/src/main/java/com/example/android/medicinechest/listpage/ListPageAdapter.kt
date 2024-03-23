@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.medicinechest.database.Product
@@ -13,7 +14,7 @@ import com.example.android.medicinechest.R
 import com.example.android.medicinechest.mainpage.ButtonViewHolder
 import com.example.android.medicinechest.listpage.OnClickListener
 
-class ProductViewHolder(val button: Button) : RecyclerView.ViewHolder(button) {
+class ProductViewHolder(val button: LinearLayout) : RecyclerView.ViewHolder(button) {
 //    private val res: Resources = itemView.context.resources
 //    private val productInfo: Button = itemView.findViewById(R.id.product_info)
 //    private val name: TextView = itemView.findViewById(R.id.name)
@@ -58,7 +59,12 @@ class ListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val item = data[position]
-        holder.button.text = item.toString()
+        val nameTextView = holder.button.getChildAt(0) as TextView
+        nameTextView.text = item.name
+        val moreInfoLayout = holder.button.getChildAt(1) as LinearLayout
+        (moreInfoLayout.getChildAt(0) as TextView).text = "Формат выпуска: ${item.type}"
+        (moreInfoLayout.getChildAt(1) as TextView).text = "Количество: ${item.amount}"
+        (moreInfoLayout.getChildAt(2) as TextView).text = "Дозировка: ${item.dosage}"
         holder.button.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, item)
@@ -69,7 +75,7 @@ class ListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val button = layoutInflater
-            .inflate(R.layout.list_item, parent, false) as Button
+            .inflate(R.layout.list_item, parent, false) as LinearLayout
         return ProductViewHolder(button)
     }
 

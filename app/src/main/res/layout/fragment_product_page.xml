@@ -4,82 +4,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         tools:context=".productpage.ProductPageFragment">
 
         <TextView
-            android:id="@+id/title_text"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin"
-            android:fontFamily="sans-serif"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="60dp"
             android:text="Препарат"
-            android:textSize="@dimen/title_text_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="#c92435"
+            android:textSize="24dp" />
 
         <TextView
-            android:id="@+id/id_text"
+            android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginBottom="20dp"
             android:text="Id"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title_text"/>
+            android:textSize="18dp"/>
 
         <TextView
-            android:id="@+id/name_text"
+            android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="64dp"
-            android:text="Наименование"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/id_text"/>
-
-        <TextView
-            android:id="@+id/type_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:text="Формат выпуска"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/name_text"/>
+            android:textSize="18dp"/>
 
         <TextView
-            android:id="@+id/amount_text"
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:text="Количество"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/type_text"/>
+            android:textSize="18dp"/>
 
         <TextView
-            android:id="@+id/dosage_text"
+            android:id="@+id/dosage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:text="Дозировка"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/amount_text"/>
+            android:textSize="18dp"/>
 
         <TextView
-            android:id="@+id/comment_text"
+            android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="50dp"
             android:text="Комментарий"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/dosage_text"/>
+            android:textSize="18dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

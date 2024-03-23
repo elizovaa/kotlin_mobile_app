@@ -46,17 +46,18 @@ class ListPageFragment : Fragment() {
                 it.findNavController().navigate(
                     ListPageFragmentDirections
                         .actionListPageFragmentToProductPageFragment(
+                            model.productId,
                             model.name,
                             model.type,
                             model.amount,
                             model.dosage,
-                            model.comment,
-                            model.productId
+                            model.comment
                         )
                 )
             }
         })
         binding.productList.adapter = adapter
+        binding.listName.text = args.name
 
         viewModel.products.observe(viewLifecycleOwner, Observer { products ->
             if (products != null)

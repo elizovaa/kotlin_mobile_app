@@ -9,24 +9,24 @@
     <fragment
         android:id="@+id/main_page_fragment"
         android:name="com.example.android.medicinechest.mainpage.MainPageFragment"
-        android:label="@string/main_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_main_page">
         <action
             android:id="@+id/action_mainPageFragment_to_listPageFragment"
             app:destination="@id/list_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
-<!--        <action-->
-<!--            android:id="@+id/action_mainPageFragment_to_addProductPageFragment"-->
-<!--            app:destination="@id/add_product_page_fragment"-->
-<!--            app:enterAnim="@anim/slide_in_right"-->
-<!--            app:popEnterAnim="@anim/slide_in_right" />-->
+        <action
+            android:id="@+id/action_mainPageFragment_to_addProductPageFragment"
+            app:destination="@id/add_product_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 
     <fragment
         android:id="@+id/list_page_fragment"
         android:name="com.example.android.medicinechest.listpage.ListPageFragment"
-        android:label="@string/list_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_list_page">
         <argument
             android:name="listId"
@@ -36,12 +36,15 @@
             app:destination="@id/product_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/add_product_page_fragment"
         android:name="com.example.android.medicinechest.addproductpage.ProductAddPageFragment"
-        android:label="@string/add_product_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_add_product_page">
         <action
             android:id="@+id/action_addProductPageFragment_to_productPageFragment"
@@ -53,6 +56,12 @@
             android:id="@+id/action_addProductPageFragment_to_mainPageFragment"
             app:destination="@id/main_page_fragment"
             app:enterAnim="@anim/slide_in_right" />
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="update"
+            app:argType="boolean" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -76,12 +85,19 @@
     <fragment
         android:id="@+id/product_page_fragment"
         android:name="com.example.android.medicinechest.productpage.ProductPageFragment"
-        android:label="@string/add_product_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_product_page">
         <action
             android:id="@+id/action_productPageFragment_to_addProductPageFragment"
             app:destination="@id/add_product_page_fragment"
             app:enterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_productPageFragment_to_mainPageFragment"
+            app:destination="@id/main_page_fragment"
+            app:enterAnim="@anim/slide_in_right" />
+        <argument
+            android:name="id"
+            app:argType="long" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -97,15 +113,12 @@
         <argument
             android:name="comment"
             app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="long" />
     </fragment>
 
     <fragment
         android:id="@+id/add_list_page_fragment"
         android:name="com.example.android.medicinechest.addlistpage.ListAddPageFragment"
-        android:label="@string/add_product_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_add_list_page">
         <action
             android:id="@+id/action_addListPageFragment_to_mainPageFragment"
@@ -118,6 +131,6 @@
     <fragment
         android:id="@+id/search_page_fragment"
         android:name="com.example.android.medicinechest.searchpage.SearchPageFragment"
-        android:label="@string/search_page_fragment"
+        android:label="@string/main_page_title"
         tools:layout="@layout/fragment_search_page"/>
 </navigation>

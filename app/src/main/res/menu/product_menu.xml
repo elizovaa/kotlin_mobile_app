@@ -4,9 +4,9 @@
     <item
         android:id="@+id/add_product_page_fragment"
         android:title="Редактировать" />
-<!--    <item-->
-<!--        android:id="@+id/add_list_page_fragment"-->
-<!--        android:title="Удалить" />-->
+    <item
+        android:id="@+id/main_page_fragment"
+        android:title="Удалить" />
 
 <!--    <item-->
 <!--        android:id="@+id/add_list_page_fragment"-->

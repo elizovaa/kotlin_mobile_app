@@ -1,6 +1,7 @@
 package com.example.android.medicinechest.addproductpage
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.android.medicinechest.database.Product
@@ -17,31 +18,39 @@ class ProductAddPageViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    var product: Product? = null
+    private val _navigateToProduct = MutableLiveData<Boolean?>()
+    val navigateToProduct: LiveData<Boolean?>
+        get() = _navigateToProduct
 
-    private val _navigateToAdd = MutableLiveData<Boolean?>()
-    val navigateToAdd: LiveData<Boolean?>
-        get() = _navigateToAdd
+    private var _product: Product = Product()
+    val product: Product
+        get() = _product
+//
+//    fun getProduct(id: Long, update: Boolean): Product {
+//        if (update)
+//            _product = dao.get(id)!!
+//        return _product
+//    }
 
     fun doneNavigating() {
-        _navigateToAdd.value = false
+        _navigateToProduct.value = false
     }
 
-    fun prepareForNavigationToAdd(name: String, type: String, amount: Int, dosage: String, comment: String) {
+    fun prepareForNavigationToProduct(product: Product, update: Boolean) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                val newProduct = Product()
-                val insertProject = newProduct.copy(
-                    name = name,
-                    type = type,
-                    amount = amount,
-                    dosage = dosage,
-                    comment = comment
-                )
-                dao.insert(insertProject)
-                product = insertProject
+                if (update) {
+                    dao.update(product)
+                    _product = product
+                }
+                else {
+                    val id = dao.insert(product)
+                    _product = dao.get(id)!!
+                    Log.i("ProductAddPageViewModel", _product.productId.toString())
+
+                }
             }
-            _navigateToAdd.value = true
+            _navigateToProduct.value = true
         }
     }
 
