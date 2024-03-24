@@ -32,6 +32,8 @@ class ProductAddPageFragment : Fragment() {
             .get(ProductAddPageViewModel::class.java)
 
         if (args.update) {
+            binding.titleText.text = "Редактировать"
+            binding.addProductButton.text = "Сохранить"
             binding.nameEditText.text.insert(0,  args.name)
             binding.typeEditText.text.insert(0,  args.type)
             binding.amountEditText.text.insert(0,  args.amount.toString())

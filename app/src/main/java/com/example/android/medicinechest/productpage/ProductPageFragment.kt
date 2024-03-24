@@ -78,6 +78,20 @@ class ProductPageFragment : Fragment() {
                         .actionProductPageFragmentToMainPageFragment())
                 return true
             }
+            R.id.update_composition_page_fragment -> {
+                requireView().findNavController().navigate(
+                    ProductPageFragmentDirections
+                        .actionProductPageFragmentToUpdateCompositionPageFragment(
+                            args.id,
+                            args.name,
+                            false,
+                            args.type,
+                            args.amount,
+                            args.dosage,
+                            args.comment
+                        ))
+                return true
+            }
             else -> {
                 return super.onOptionsItemSelected(item)
             }

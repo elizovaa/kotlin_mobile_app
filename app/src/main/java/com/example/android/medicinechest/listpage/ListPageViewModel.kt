@@ -84,6 +84,15 @@ class ListPageViewModel(
         }
     }
 
+    fun delete(id: Long) {
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                dao.deleteListRefs(id)
+                dao.deleteList(id)
+            }
+        }
+    }
+
 //
 //    private suspend fun getTonightFromDatabase(): SleepNight? {
 //        return withContext(Dispatchers.IO) {

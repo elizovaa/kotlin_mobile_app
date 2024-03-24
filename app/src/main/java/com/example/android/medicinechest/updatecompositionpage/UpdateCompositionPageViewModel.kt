@@ -1,7 +1,6 @@
-package com.example.android.medicinechest.updatelistpage
+package com.example.android.medicinechest.updatecompositionpage
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,8 +8,9 @@ import com.example.android.medicinechest.database.InventoryProductCrossRef
 import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 
-class UpdateListPageViewModel(
-    private val listId: Long,
+class UpdateCompositionPageViewModel(
+    private val isUpdateList: Boolean,
+    private val objectId: Long,
     private val dao: MedicineChestDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
@@ -19,7 +19,11 @@ class UpdateListPageViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val products = dao.getProductChecksOfList(listId)
+    val objects =
+        if (isUpdateList)
+            dao.getProductChecksOfList(objectId)
+        else
+            dao.getListChecksOfProduct(objectId)
 
     private val _navigateToSave = MutableLiveData<Boolean?>()
     val navigateToSave: LiveData<Boolean?>
@@ -29,18 +33,22 @@ class UpdateListPageViewModel(
         _navigateToSave.value = false
     }
 
-    fun prepareForNavigationToList(checks: Map<Long, Boolean>) {
+    fun prepareForNavigationToObject(checks: List<Long>) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                for (productCheck in products.value!!) {
-                    val oldCheck = productCheck.isChecked
-                    val newCheck = checks[productCheck.id]
-                    if (newCheck == null)
+                for (objectCheck in objects.value!!) {
+                    val oldCheck = objectCheck.isChecked
+                    val newCheck = checks.contains(objectCheck.id)
+                    if (!newCheck)
                         continue
-                    val ref = InventoryProductCrossRef(listId, productCheck.id)
-                    if (!oldCheck && newCheck)
+                    val ref =
+                        if (isUpdateList)
+                            InventoryProductCrossRef(objectId, objectCheck.id)
+                        else
+                            InventoryProductCrossRef(objectCheck.id, objectId)
+                    if (!oldCheck)
                         dao.insert(ref)
-                    if (oldCheck && !newCheck)
+                    if (oldCheck)
                         dao.delete(ref)
                 }
             }

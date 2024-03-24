@@ -16,11 +16,8 @@ import com.example.android.medicinechest.databinding.FragmentListPageBinding
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.example.android.medicinechest.database.Inventory
 import com.example.android.medicinechest.database.Product
-import com.example.android.medicinechest.mainpage.MainPageFragmentDirections
-import com.example.android.medicinechest.listpage.OnClickListener
+import com.example.android.medicinechest.productpage.ProductPageFragmentDirections
 
 class ListPageFragment : Fragment() {
     private lateinit var viewModel: ListPageViewModel
@@ -113,10 +110,25 @@ class ListPageFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val args = ListPageFragmentArgs.fromBundle(requireArguments())
         when(item.itemId) {
-            R.id.update_list_page_fragment -> {
+            R.id.update_composition_page_fragment -> {
                 requireView().findNavController().navigate(
                     ListPageFragmentDirections
-                        .actionListPageFragmentToUpdateListPageFragment(args.listId, args.name))
+                        .actionListPageFragmentToUpdateCompositionPageFragment(
+                            args.listId,
+                            args.name,
+                            true,
+                            "",
+                            0,
+                            "",
+                            ""
+                        ))
+                return true
+            }
+            R.id.main_page_fragment -> {
+                viewModel.delete(args.listId)
+                requireView().findNavController().navigate(
+                    ListPageFragmentDirections
+                        .actionListPageFragmentToMainPageFragment())
                 return true
             }
             else -> {

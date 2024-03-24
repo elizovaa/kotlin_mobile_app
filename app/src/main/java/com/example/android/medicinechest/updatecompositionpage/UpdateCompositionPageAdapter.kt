@@ -1,4 +1,4 @@
-package com.example.android.medicinechest.updatelistpage
+package com.example.android.medicinechest.updatecompositionpage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.ObjectCheck
 
-class ProductViewHolder(val button: RelativeLayout) : RecyclerView.ViewHolder(button)
+class ObjectViewHolder(val button: RelativeLayout) : RecyclerView.ViewHolder(button)
 
 
-class UpdateListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
+class UpdateCompositionPageAdapter: RecyclerView.Adapter<ObjectViewHolder>() {
 
     var data = listOf<ObjectCheck>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-    val checks = mutableMapOf<Long, Boolean>()
+    val checks = mutableListOf<Long>()
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ObjectViewHolder, position: Int) {
         val item = data[position]
         val nameTextView = holder.button.getChildAt(0) as TextView
         nameTextView.text = item.name
@@ -32,16 +32,16 @@ class UpdateListPageAdapter: RecyclerView.Adapter<ProductViewHolder>() {
 
         checkbox.setOnClickListener {
             if (!checks.contains(item.id))
-                checks[item.id] = checkbox.isChecked
+                checks.add(item.id)
             else
                 checks.remove(item.id)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val button = layoutInflater
-            .inflate(R.layout.update_list_item, parent, false) as RelativeLayout
-        return ProductViewHolder(button)
+            .inflate(R.layout.update_composition_item, parent, false) as RelativeLayout
+        return ObjectViewHolder(button)
     }
 }

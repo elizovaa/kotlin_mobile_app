@@ -3,7 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/update_list_page_fragment"
+        android:id="@+id/update_composition_page_fragment"
         android:title="Изменить состав" />
+    <item
+        android:id="@+id/main_page_fragment"
+        android:title="Удалить" />
 
 </menu>

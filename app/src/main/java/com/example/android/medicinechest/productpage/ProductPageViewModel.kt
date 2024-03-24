@@ -2,11 +2,8 @@ package com.example.android.medicinechest.productpage
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import com.example.android.medicinechest.database.Product
 import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
-import androidx.lifecycle.MutableLiveData
 
 class ProductPageViewModel(
     private val id: Long,
@@ -31,6 +28,7 @@ class ProductPageViewModel(
     fun delete(id: Long) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
+                dao.deleteProductRefs(id)
                 dao.delete(id)
             }
         }

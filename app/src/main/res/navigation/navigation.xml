@@ -47,8 +47,8 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
         <action
-            android:id="@+id/action_listPageFragment_to_updateListPageFragment"
-            app:destination="@id/update_list_page_fragment"
+            android:id="@+id/action_listPageFragment_to_updateCompositionPageFragment"
+            app:destination="@id/update_composition_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
         <action
@@ -119,6 +119,10 @@
             app:destination="@id/list_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/list_page_fragment" />
+        <action
+            android:id="@+id/action_productPageFragment_to_updateCompositionPageFragment"
+            app:destination="@id/update_composition_page_fragment"
+            app:enterAnim="@anim/slide_in_right" />
         <argument
             android:name="id"
             app:argType="long" />
@@ -159,21 +163,42 @@
         tools:layout="@layout/fragment_search_page"/>
 
     <fragment
-        android:id="@+id/update_list_page_fragment"
-        android:name="com.example.android.medicinechest.updatelistpage.UpdateListPageFragment"
+        android:id="@+id/update_composition_page_fragment"
+        android:name="com.example.android.medicinechest.updatecompositionpage.UpdateCompositionPageFragment"
         android:label="@string/main_page_title"
-        tools:layout="@layout/fragment_update_list_page">
+        tools:layout="@layout/fragment_update_composition_page">
         <action
             android:id="@+id/action_updateListPageFragment_to_listPageFragment"
             app:destination="@id/list_page_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/main_page_fragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_updateListPageFragment_to_productPageFragment"
+            app:destination="@id/product_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/list_page_fragment"
+            app:popUpToInclusive="false" />
         <argument
-            android:name="listId"
+            android:name="objectId"
             app:argType="long" />
         <argument
             android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="isUpdateList"
+            app:argType="boolean" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+        <argument
+            android:name="dosage"
+            app:argType="string" />
+        <argument
+            android:name="comment"
             app:argType="string" />
     </fragment>
 </navigation>
