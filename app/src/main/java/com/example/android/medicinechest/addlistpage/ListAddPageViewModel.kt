@@ -1,12 +1,14 @@
 package com.example.android.medicinechest.addlistpage
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 import androidx.lifecycle.MutableLiveData
 import com.example.android.medicinechest.database.Inventory
+import com.example.android.medicinechest.database.Product
 
 class ListAddPageViewModel(
     private val dao: MedicineChestDatabaseDao,
@@ -17,24 +19,32 @@ class ListAddPageViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    private val _navigateToAdd = MutableLiveData<Boolean?>()
-    val navigateToAdd: LiveData<Boolean?>
-        get() = _navigateToAdd
+    private val _navigateToList = MutableLiveData<Boolean?>()
+    val navigateToList: LiveData<Boolean?>
+        get() = _navigateToList
+
+    private var _list: Inventory = Inventory()
+    val list: Inventory
+        get() = _list
 
     fun doneNavigating() {
-        _navigateToAdd.value = false
+        _navigateToList.value = false
     }
 
-    fun prepareForNavigationToAdd(name: String) {
+    fun prepareForNavigationToList(list: Inventory, update: Boolean) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                val newList = Inventory()
-                val insertList = newList.copy(
-                    name = name
-                )
-                dao.insert(insertList)
+                if (update) {
+                    dao.updateList(list)
+                    _list = list
+                }
+                else {
+                    val id = dao.insert(list)
+                    _list = dao.getList(id)!!
+                    Log.i("ListAddPageViewModel", _list.listId.toString())
+                }
             }
-            _navigateToAdd.value = true
+            _navigateToList.value = true
         }
     }
 

@@ -13,8 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import androidx.navigation.fragment.findNavController
+import com.example.android.medicinechest.addproductpage.ProductAddPageFragmentArgs
+import com.example.android.medicinechest.database.Inventory
+import com.example.android.medicinechest.database.Product
 import com.example.android.medicinechest.databinding.FragmentAddListPageBinding
-import com.example.android.medicinechest.databinding.FragmentAddProductPageBinding
 
 class ListAddPageFragment : Fragment() {
     private lateinit var viewModel: ListAddPageViewModel
@@ -24,25 +26,37 @@ class ListAddPageFragment : Fragment() {
         val binding: FragmentAddListPageBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_add_list_page, container, false)
 
+        val args = ListAddPageFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
         val dao = MedicineChestDatabase.getInstance(application).getMedicineChestDatabaseDao()
         val viewModelFactory = ListAddPageViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ListAddPageViewModel::class.java)
 
+        if (args.update) {
+            binding.titleText.text = "Редактировать"
+            binding.addButton.text = "Сохранить"
+            binding.nameEditText.text.insert(0,  args.name)
+        }
+
         binding.addButton.setOnClickListener {
             try {
                 val name = validateNonEmptyText(binding.nameEditText, "название")
-                viewModel.prepareForNavigationToAdd(name)
+                val insertList = Inventory(
+                    listId = args.id,
+                    name = name
+                )
+                viewModel.prepareForNavigationToList(insertList, args.update)
             } catch (e: RuntimeException) {
                 return@setOnClickListener
             }
         }
 
-        viewModel.navigateToAdd.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
+        viewModel.navigateToList.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
             if (shouldNavigate!!) {
+                val list = viewModel.list
                 this.findNavController().navigate(ListAddPageFragmentDirections
-                    .actionAddListPageFragmentToMainPageFragment())
+                    .actionAddListPageFragmentToListPageFragment(list.listId, list.name))
                 viewModel.doneNavigating()
             }
         })

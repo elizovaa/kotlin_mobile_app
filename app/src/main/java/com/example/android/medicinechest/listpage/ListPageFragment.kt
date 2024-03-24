@@ -110,6 +110,16 @@ class ListPageFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val args = ListPageFragmentArgs.fromBundle(requireArguments())
         when(item.itemId) {
+            R.id.add_list_page_fragment -> {
+                requireView().findNavController().navigate(
+                    ListPageFragmentDirections
+                        .actionListPageFragmentToAddListPageFragment(
+                            args.listId,
+                            args.name,
+                            true
+                        ))
+                return true
+            }
             R.id.update_composition_page_fragment -> {
                 requireView().findNavController().navigate(
                     ListPageFragmentDirections

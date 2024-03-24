@@ -94,7 +94,11 @@ class MainPageFragment : Fragment() {
             R.id.add_list_page_fragment -> {
                 requireView().findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToAddListPageFragment())
+                        .actionMainPageFragmentToAddListPageFragment(
+                            0L,
+                            "",
+                            false
+                        ))
                 return true
             }
             R.id.search_page_fragment -> {

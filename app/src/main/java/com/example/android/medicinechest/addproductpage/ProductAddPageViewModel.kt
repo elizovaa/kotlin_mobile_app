@@ -25,12 +25,6 @@ class ProductAddPageViewModel(
     private var _product: Product = Product()
     val product: Product
         get() = _product
-//
-//    fun getProduct(id: Long, update: Boolean): Product {
-//        if (update)
-//            _product = dao.get(id)!!
-//        return _product
-//    }
 
     fun doneNavigating() {
         _navigateToProduct.value = false

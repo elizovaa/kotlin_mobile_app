@@ -42,6 +42,11 @@
             android:name="listId"
             app:argType="long" />
         <action
+            android:id="@+id/action_listPageFragment_to_addListPageFragment"
+            app:destination="@id/add_list_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/list_page_fragment" />
+        <action
             android:id="@+id/action_listPageFragment_to_productPageFragment"
             app:destination="@id/product_page_fragment"
             app:enterAnim="@anim/slide_in_right"
@@ -154,6 +159,20 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right"
             app:popUpTo="@id/main_page_fragment" />
+        <action
+            android:id="@+id/action_addListPageFragment_to_listPageFragment"
+            app:destination="@id/list_page_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/main_page_fragment" />
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="update"
+            app:argType="boolean" />
     </fragment>
 
     <fragment

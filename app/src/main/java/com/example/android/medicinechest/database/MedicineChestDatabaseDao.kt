@@ -24,6 +24,9 @@ interface MedicineChestDatabaseDao {
     @Update
     fun update(product: Product)
 
+    @Update
+    fun updateList(inventory: Inventory)
+
     @Query("DELETE FROM product_list_table WHERE product_id = :key")
     fun deleteProductRefs(key: Long)
 
