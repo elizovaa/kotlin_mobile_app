@@ -57,6 +57,9 @@ interface MedicineChestDatabaseDao {
     @Query("SELECT * FROM product_table ORDER BY product_id DESC")
     fun getAllProducts(): LiveData<List<Product>>
 
+    @Query("SELECT * FROM product_table WHERE name LIKE :searchWord ORDER BY name")
+    fun getAllProducts(searchWord: String): LiveData<List<Product>>
+
     @Query("SELECT * FROM list_table ORDER BY list_id DESC")
     fun getAllLists(): LiveData<List<Inventory>>
 

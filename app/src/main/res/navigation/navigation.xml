@@ -179,7 +179,12 @@
         android:id="@+id/search_page_fragment"
         android:name="com.example.android.medicinechest.searchpage.SearchPageFragment"
         android:label="@string/main_page_title"
-        tools:layout="@layout/fragment_search_page"/>
+        tools:layout="@layout/fragment_search_page">
+    <action
+        android:id="@+id/action_searchPageFragment_to_productPageFragment"
+        app:destination="@id/product_page_fragment"
+        app:enterAnim="@anim/slide_in_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/update_composition_page_fragment"

@@ -61,42 +61,6 @@ class ListPageFragment : Fragment() {
                 adapter.data = products
         })
 
-//        binding.addButton.setOnClickListener {
-//            viewModel.onTurnOnNavigateToAdd()
-//        }
-
-//        binding.clearButton.setOnClickListener {
-//            viewModel.onClear()
-//        }
-//
-//        binding.startButton.setOnClickListener {
-//            viewModel.onStartTracking()
-//        }
-//        binding.stopButton.setOnClickListener {
-//            viewModel.onStopTracking()
-//        }
-//        binding.clearButton.setOnClickListener {
-//            viewModel.onClear()
-//        }
-//        viewModel.navigateToAdd.observe(viewLifecycleOwner, Observer { shouldNavigation ->
-//            if (shouldNavigation!!) {
-//                this.findNavController().navigate(
-//                    ListPageFragmentDirections
-//                        .actionListPageFragmentToAddProductPageFragment())
-//                viewModel.doneNavigating()
-//            }
-//        })
-
-//        viewModel.startButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.startButton.isEnabled = visible
-//        })
-//        viewModel.stopButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.stopButton.isEnabled = visible
-//        })
-//        viewModel.clearButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.clearButton.isEnabled = visible
-//        })
-
         return binding.root
     }
 
