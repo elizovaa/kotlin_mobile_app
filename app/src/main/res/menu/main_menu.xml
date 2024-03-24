@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/add_product_page_fragment"
-        android:title="Добавить препарат" />
+        android:title="@string/add_product" />
     <item
         android:id="@+id/add_list_page_fragment"
-        android:title="Добавить список" />
+        android:title="@string/add_list" />
     <item
         android:id="@+id/search_page_fragment"
-        android:title="Поиск" />
+        android:title="@string/search_button" />
 
 </menu>

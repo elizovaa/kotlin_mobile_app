@@ -19,16 +19,7 @@
             android:layout_marginBottom="60dp"
             android:text="Препарат"
             android:textColor="@color/text_color"
-            android:textSize="24dp" />
-
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Id"
-            android:textColor="@color/text_color"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/title_text_size" />
 
         <TextView
             android:id="@+id/type"
@@ -37,7 +28,7 @@
             android:layout_marginBottom="20dp"
             android:text="Формат выпуска"
             android:textColor="@color/text_color"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/text_size"/>
 
         <TextView
             android:id="@+id/amount"
@@ -46,7 +37,7 @@
             android:layout_marginBottom="20dp"
             android:text="Количество"
             android:textColor="@color/text_color"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/text_size"/>
 
         <TextView
             android:id="@+id/dosage"
@@ -55,7 +46,7 @@
             android:layout_marginBottom="20dp"
             android:text="Дозировка"
             android:textColor="@color/text_color"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/text_size"/>
 
         <TextView
             android:id="@+id/comment"
@@ -63,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Комментарий"
             android:textColor="@color/text_color"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/text_size"/>
 
     </LinearLayout>
 </layout>

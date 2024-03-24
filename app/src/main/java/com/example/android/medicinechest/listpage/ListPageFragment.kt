@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.android.medicinechest.database.Product
-import com.example.android.medicinechest.productpage.ProductPageFragmentDirections
 
 class ListPageFragment : Fragment() {
     private lateinit var viewModel: ListPageViewModel

@@ -17,18 +17,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="60dp"
-            android:text="Добавление списка"
+            android:text="@string/add_list_action"
             android:textColor="@color/text_color"
-            android:textSize="24dp" />
+            android:textSize="@dimen/title_text_size" />
 
         <EditText
             android:id="@+id/name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Введите название"
+            android:hint="@string/name_hint"
             android:inputType="text"
             android:textColor="@color/text_color"
-            android:textSize="18dp"
+            android:textSize="@dimen/text_size"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -36,7 +36,7 @@
             style="@style/Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Добавить"
+            android:text="@string/add_button"
             android:layout_marginTop="60dp"/>
 
     </LinearLayout>

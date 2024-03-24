@@ -17,9 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="40dp"
-            android:text="@string/list_page_title"
+            android:text="@string/list_all_page_title"
             android:textColor="@color/text_color"
-            android:textSize="24dp" />
+            android:textSize="@dimen/title_text_size" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_list"
@@ -28,30 +28,6 @@
 
             android:layout_marginBottom="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-<!--        <Button-->
-<!--            android:id="@+id/add_button"-->
-<!--            style="@style/SleepButtons"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="@dimen/margin"-->
-<!--            android:text="Добавить"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/title_text"-->
-<!--            app:layout_constraintHorizontal_chainStyle="spread"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/clear_button"-->
-<!--            style="@style/SleepButtons"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="@dimen/margin"-->
-<!--            android:text="Очистить"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/add_button"-->
-<!--            app:layout_constraintHorizontal_chainStyle="spread"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
     </LinearLayout>
 </layout>

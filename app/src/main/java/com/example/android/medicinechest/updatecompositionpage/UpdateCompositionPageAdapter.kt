@@ -11,7 +11,6 @@ import com.example.android.medicinechest.database.ObjectCheck
 
 class ObjectViewHolder(val button: RelativeLayout) : RecyclerView.ViewHolder(button)
 
-
 class UpdateCompositionPageAdapter: RecyclerView.Adapter<ObjectViewHolder>() {
 
     var data = listOf<ObjectCheck>()

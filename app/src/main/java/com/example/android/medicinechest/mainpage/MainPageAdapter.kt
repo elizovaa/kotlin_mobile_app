@@ -9,7 +9,7 @@ import com.example.android.medicinechest.database.Inventory
 
 class ButtonViewHolder(val button: Button): RecyclerView.ViewHolder(button)
 
-class MainPageAdapter(): RecyclerView.Adapter<ButtonViewHolder>() {
+class MainPageAdapter: RecyclerView.Adapter<ButtonViewHolder>() {
     private var onClickListener: OnClickListener? = null
     var data = listOf<Inventory>()
         set(value) {

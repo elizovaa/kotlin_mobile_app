@@ -1,28 +1,19 @@
 package com.example.android.medicinechest.productpage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.MedicineChestDatabase
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.example.android.medicinechest.databinding.FragmentAddProductPageBinding
 import com.example.android.medicinechest.databinding.FragmentProductPageBinding
-import com.example.android.medicinechest.listpage.ListPageFragmentArgs
-import com.example.android.medicinechest.mainpage.MainPageFragmentDirections
 
 class ProductPageFragment : Fragment() {
     private lateinit var viewModel: ProductPageViewModel
@@ -41,10 +32,9 @@ class ProductPageFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.name.text = args.name
-        binding.id.text = "Идентификатор: ${args.id}"
-        binding.type.text = "Формат выпуска: ${args.type}"
-        binding.amount.text = "Количество: ${args.amount}"
-        binding.dosage.text = "Дозировка: ${args.dosage}"
+        binding.type.text = getString(R.string.type_info) + " " + args.type
+        binding.amount.text = getString(R.string.amount_info) + " " + args.amount
+        binding.dosage.text = getString(R.string.dosage_info) + " " + args.dosage
         binding.comment.text = "${args.comment}"
         return binding.root
     }
@@ -97,7 +87,5 @@ class ProductPageFragment : Fragment() {
             }
         }
         return true
-//        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-//                || super.onOptionsItemSelected(item)
     }
 }

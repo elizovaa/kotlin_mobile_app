@@ -15,16 +15,6 @@ class ProductPageViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-//    private var _product: Product? = null
-//    val product: Product
-//        get() = _product!!
-//
-//    init {
-//        uiScope.launch {
-//            _product = dao.get(id)!!
-//        }
-//    }
-
     fun delete(id: Long) {
         uiScope.launch {
             withContext(Dispatchers.IO) {

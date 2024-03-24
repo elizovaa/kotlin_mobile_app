@@ -1,7 +1,6 @@
 package com.example.android.medicinechest.mainpage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -14,14 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.Inventory
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import com.example.android.medicinechest.databinding.FragmentMainPageBinding
-import com.example.android.medicinechest.listpage.ListPageAdapter
-import com.example.android.medicinechest.productpage.ProductPageFragmentArgs
-import com.example.android.medicinechest.productpage.ProductPageFragmentDirections
 
 class MainPageFragment : Fragment() {
     private lateinit var viewModel: MainPageViewModel
@@ -59,21 +54,8 @@ class MainPageFragment : Fragment() {
         binding.allProductsButton.setOnClickListener {
             this.findNavController().navigate(
                     MainPageFragmentDirections
-                        .actionMainPageFragmentToListPageFragment(0, "Все препараты"))
+                        .actionMainPageFragmentToListPageFragment(0, getString(R.string.list_all_page_title)))
         }
-
-//        binding.clearButton.setOnClickListener {
-//            viewModel.onClear()
-//        }
-//        viewModel.startButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.startButton.isEnabled = visible
-//        })
-//        viewModel.stopButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.stopButton.isEnabled = visible
-//        })
-//        viewModel.clearButtonVisible.observe(viewLifecycleOwner, Observer { visible ->
-//            binding.clearButton.isEnabled = visible
-//        })
 
         return binding.root
     }

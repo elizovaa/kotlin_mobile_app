@@ -1,7 +1,6 @@
 package com.example.android.medicinechest.addlistpage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.medicinechest.R
 import com.example.android.medicinechest.database.MedicineChestDatabase
 import androidx.navigation.fragment.findNavController
-import com.example.android.medicinechest.addproductpage.ProductAddPageFragmentArgs
 import com.example.android.medicinechest.database.Inventory
-import com.example.android.medicinechest.database.Product
 import com.example.android.medicinechest.databinding.FragmentAddListPageBinding
 
 class ListAddPageFragment : Fragment() {
@@ -34,14 +31,14 @@ class ListAddPageFragment : Fragment() {
             .get(ListAddPageViewModel::class.java)
 
         if (args.update) {
-            binding.titleText.text = "Редактировать"
-            binding.addButton.text = "Сохранить"
+            binding.titleText.text = getString(R.string.edit_button)
+            binding.addButton.text = getString(R.string.save_button)
             binding.nameEditText.text.insert(0,  args.name)
         }
 
         binding.addButton.setOnClickListener {
             try {
-                val name = validateNonEmptyText(binding.nameEditText, "название")
+                val name = validateNonEmptyText(binding.nameEditText, getString(R.string.name))
                 val insertList = Inventory(
                     listId = args.id,
                     name = name
@@ -66,7 +63,6 @@ class ListAddPageFragment : Fragment() {
     private fun validateNonEmptyText(editText: EditText, nameForError: String): String {
         if (editText.text.toString().isEmpty()) {
             editText.error = "Поле $nameForError обязательно для заполнения"
-            Log.i("ListAddPageFragment", "Поле $nameForError обязательно для заполнения")
             throw RuntimeException()
         }
         return editText.text.toString()

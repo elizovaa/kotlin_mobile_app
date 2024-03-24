@@ -71,14 +71,6 @@ interface MedicineChestDatabaseDao {
     )
     fun getProductsOfList(listId: Long): LiveData<List<Product>>
 
-//    @Query(
-//        "SELECT list_table.list_id, list_table.name FROM list_table " +
-//                "INNER JOIN product_list_table ON list_table.list_id = product_list_table.list_id " +
-//                "INNER JOIN product_table ON product_list_table.product_id = product_table.product_id " +
-//                "WHERE product_table.product_id = :productId"
-//    )
-//    fun getListsOfProduct(productId: Long): LiveData<List<Inventory>>
-
     @Query(
         "SELECT product_id AS id, name AS name, EXISTS(SELECT * FROM product_list_table WHERE list_id = :listId AND product_id = product_table.product_id) AS isChecked FROM product_table"
     )

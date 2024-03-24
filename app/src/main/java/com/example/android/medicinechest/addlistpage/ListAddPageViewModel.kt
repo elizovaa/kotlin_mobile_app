@@ -1,14 +1,12 @@
 package com.example.android.medicinechest.addlistpage
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.android.medicinechest.database.MedicineChestDatabaseDao
 import kotlinx.coroutines.*
 import androidx.lifecycle.MutableLiveData
 import com.example.android.medicinechest.database.Inventory
-import com.example.android.medicinechest.database.Product
 
 class ListAddPageViewModel(
     private val dao: MedicineChestDatabaseDao,
@@ -41,7 +39,6 @@ class ListAddPageViewModel(
                 else {
                     val id = dao.insert(list)
                     _list = dao.getList(id)!!
-                    Log.i("ListAddPageViewModel", _list.listId.toString())
                 }
             }
             _navigateToList.value = true

@@ -1,7 +1,6 @@
 package com.example.android.medicinechest.addproductpage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +31,8 @@ class ProductAddPageFragment : Fragment() {
             .get(ProductAddPageViewModel::class.java)
 
         if (args.update) {
-            binding.titleText.text = "Редактировать"
-            binding.addProductButton.text = "Сохранить"
+            binding.titleText.text = getString(R.string.edit_button)
+            binding.addProductButton.text = getString(R.string.save_button)
             binding.nameEditText.text.insert(0,  args.name)
             binding.typeEditText.text.insert(0,  args.type)
             binding.amountEditText.text.insert(0,  args.amount.toString())
@@ -43,10 +42,10 @@ class ProductAddPageFragment : Fragment() {
 
         binding.addProductButton.setOnClickListener {
             try {
-                val name = validateNonEmptyText(binding.nameEditText, "наименование")
-                val type = validateNonEmptyText(binding.typeEditText, "формат выпуска")
-                val amount = Integer.parseInt(validateNonEmptyText(binding.amountEditText, "количество"))
-                val dosage = validateNonEmptyText(binding.dosageEditText, "дозировка")
+                val name = validateNonEmptyText(binding.nameEditText, getString(R.string.name))
+                val type = validateNonEmptyText(binding.typeEditText, getString(R.string.type))
+                val amount = Integer.parseInt(validateNonEmptyText(binding.amountEditText, getString(R.string.amount)))
+                val dosage = validateNonEmptyText(binding.dosageEditText, getString(R.string.dosage))
                 val comment = binding.commentEditText.text.toString()
                 val insertProduct = Product(
                     productId = args.id,
@@ -64,7 +63,6 @@ class ProductAddPageFragment : Fragment() {
 
         viewModel.navigateToProduct.observe(viewLifecycleOwner,  Observer { shouldNavigate ->
             if (shouldNavigate!!) {
-                Log.i("ProductAddPageFragment", viewModel.product.toString())
                 val product = viewModel.product
                 this.findNavController().navigate(ProductAddPageFragmentDirections
                     .actionAddProductPageFragmentToProductPageFragment(
@@ -84,7 +82,6 @@ class ProductAddPageFragment : Fragment() {
     private fun validateNonEmptyText(editText: EditText, nameForError: String): String {
         if (editText.text.toString().isEmpty()) {
             editText.error = "Поле $nameForError обязательно для заполнения"
-            Log.i("ProductAddPageFragment", "Поле $nameForError обязательно для заполнения")
             throw RuntimeException()
         }
         return editText.text.toString()
