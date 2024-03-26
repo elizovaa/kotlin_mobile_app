@@ -28,9 +28,9 @@ class SearchPageAdapter(var productList: List<Product>): RecyclerView.Adapter<Pr
         val nameTextView = holder.button.getChildAt(0) as TextView
         nameTextView.text = item.name
         val moreInfoLayout = holder.button.getChildAt(1) as LinearLayout
-        (moreInfoLayout.getChildAt(0) as TextView).text = "Формат выпуска: ${item.type}"
-        (moreInfoLayout.getChildAt(1) as TextView).text = "Количество: ${item.amount}"
-        (moreInfoLayout.getChildAt(2) as TextView).text = "Дозировка: ${item.dosage}"
+        (moreInfoLayout.getChildAt(0) as TextView).text = R.string.type_info + " " + item.type
+        (moreInfoLayout.getChildAt(1) as TextView).text = R.string.amount_info + " " + item.amount
+        (moreInfoLayout.getChildAt(2) as TextView).text = R.string.dosage_info + " " + item.dosage
         holder.button.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, item)
