@@ -201,8 +201,8 @@
             android:id="@+id/action_updateListPageFragment_to_productPageFragment"
             app:destination="@id/product_page_fragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/list_page_fragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/product_page_fragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="objectId"
             app:argType="long" />
