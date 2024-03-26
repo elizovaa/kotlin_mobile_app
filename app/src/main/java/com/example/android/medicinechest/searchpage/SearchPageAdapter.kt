@@ -1,5 +1,6 @@
 package com.example.android.medicinechest.searchpage
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -13,7 +14,7 @@ import com.example.android.medicinechest.listpage.OnClickListener
 
 class ProductViewHolder(val button: LinearLayout) : RecyclerView.ViewHolder(button)
 
-class SearchPageAdapter(var productList: List<Product>): RecyclerView.Adapter<ProductViewHolder>(), Filterable {
+class SearchPageAdapter(var productList: List<Product>, val context: Context): RecyclerView.Adapter<ProductViewHolder>(), Filterable {
     private var onClickListener: OnClickListener? = null
     var data = listOf<Product>()
         set(value) {
@@ -28,9 +29,10 @@ class SearchPageAdapter(var productList: List<Product>): RecyclerView.Adapter<Pr
         val nameTextView = holder.button.getChildAt(0) as TextView
         nameTextView.text = item.name
         val moreInfoLayout = holder.button.getChildAt(1) as LinearLayout
-        (moreInfoLayout.getChildAt(0) as TextView).text = R.string.type_info + " " + item.type
-        (moreInfoLayout.getChildAt(1) as TextView).text = R.string.amount_info + " " + item.amount
-        (moreInfoLayout.getChildAt(2) as TextView).text = R.string.dosage_info + " " + item.dosage
+
+        (moreInfoLayout.getChildAt(0) as TextView).text = "${context.getString(R.string.type_info)} ${item.type}"
+        (moreInfoLayout.getChildAt(1) as TextView).text = "${context.getString(R.string.amount_info)} ${item.amount}"
+        (moreInfoLayout.getChildAt(2) as TextView).text = "${context.getString(R.string.dosage_info)} ${item.dosage}"
         holder.button.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, item)

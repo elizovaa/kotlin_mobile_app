@@ -34,7 +34,7 @@ class SearchPageFragment : Fragment() {
             .get(SearchPageViewModel::class.java)
 
         var productList = listOf<Product>()
-        val adapter = SearchPageAdapter(productList)
+        val adapter = SearchPageAdapter(productList, container!!.context)
         binding.productList.adapter = adapter
         val it = this
         adapter.setOnClickListener(object :

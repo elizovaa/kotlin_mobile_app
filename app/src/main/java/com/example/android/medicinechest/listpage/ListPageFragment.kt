@@ -1,5 +1,6 @@
 package com.example.android.medicinechest.listpage
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -34,7 +35,7 @@ class ListPageFragment : Fragment() {
             .get(ListPageViewModel::class.java)
         setHasOptionsMenu(true)
 
-        val adapter = ListPageAdapter()
+        val adapter = ListPageAdapter(container!!.context)
         val it = this
         adapter.setOnClickListener(object :
             OnClickListener {
