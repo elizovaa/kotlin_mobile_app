@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Мобильная аптечка</string>
+    <string name="main_page_title">Мобильная аптечка</string>
+
+    <string name="list_all_page_title">Все препараты</string>
+
+    <string name="name">название</string>
+    <string name="type">формат выпуска</string>
+    <string name="amount">количество</string>
+    <string name="dosage">дозировка</string>
+
+    <string name="type_info">Формат выпуска: </string>
+    <string name="amount_info">Количество: </string>
+    <string name="dosage_info">Дозировка: </string>
+    <string name="comment_info">Комментарий: </string>
+
+    <string name="add_button">Добавить</string>
+    <string name="save_button">Сохранить</string>
+    <string name="edit_button">Редактировать</string>
+    <string name="delete_button">Удалить</string>
+    <string name="search_button">Поиск</string>
+    <string name="update_products_of_list_button">Изменить состав</string>
+    <string name="update_lists_of_product_button">Изменить списки</string>
+
+    <string name="name_hint">Введите название</string>
+    <string name="type_hint">Введите формат выпуска</string>
+    <string name="amount_hint">Введите количество</string>
+    <string name="dosage_hint">Введите дозировку</string>
+    <string name="comment_hint">Введите комментарий</string>
+
+    <string name="add_product_action">Добавление препарата</string>
+    <string name="add_list_action">Добавление списка</string>
+    <string name="edit_product_action">Редактирование препарата</string>
+    <string name="edit_list_action">Редактирование списка</string>
+
+    <string name="add_product">Добавить препарат</string>
+    <string name="add_list">Добавить список</string>
+</resources>

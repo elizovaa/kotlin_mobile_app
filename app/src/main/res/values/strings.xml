@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">Мобильная аптечка</string>
-    <string name="main_page_title">Мобильная аптечка</string>
+    <string name="app_name">Medicine Chest</string>
+    <string name="main_page_title">Medicine Chest</string>
 
-    <string name="list_all_page_title">Все препараты</string>
+    <string name="list_all_page_title">All medicaments</string>
 
-    <string name="name">название</string>
-    <string name="type">формат выпуска</string>
-    <string name="amount">количество</string>
-    <string name="dosage">дозировка</string>
+    <string name="name">name</string>
+    <string name="type">release format</string>
+    <string name="amount">quantity</string>
+    <string name="dosage">dosage</string>
 
-    <string name="type_info">Формат выпуска: </string>
-    <string name="amount_info">Количество: </string>
-    <string name="dosage_info">Дозировка: </string>
-    <string name="comment_info">Комментарий: </string>
+    <string name="type_info">Release format: </string>
+    <string name="amount_info">Quantity: </string>
+    <string name="dosage_info">Dosage: </string>
+    <string name="comment_info">Comment: </string>
 
-    <string name="add_button">Добавить</string>
-    <string name="save_button">Сохранить</string>
-    <string name="edit_button">Редактировать</string>
-    <string name="delete_button">Удалить</string>
-    <string name="search_button">Поиск</string>
-    <string name="update_products_of_list_button">Изменить состав</string>
-    <string name="update_lists_of_product_button">Изменить списки</string>
+    <string name="add_button">Add</string>
+    <string name="save_button">Save</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="search_button">Search</string>
+    <string name="update_products_of_list_button">Change the composition</string>
+    <string name="update_lists_of_product_button">Change lists</string>
 
-    <string name="name_hint">Введите название</string>
-    <string name="type_hint">Введите формат выпуска</string>
-    <string name="amount_hint">Введите количество</string>
-    <string name="dosage_hint">Введите дозировку</string>
-    <string name="comment_hint">Введите комментарий</string>
+    <string name="name_hint">Enter name</string>
+    <string name="type_hint">Enter release format</string>
+    <string name="amount_hint">Enter quantity</string>
+    <string name="dosage_hint">Enter dosage</string>
+    <string name="comment_hint">Enter comment</string>
 
-    <string name="add_product_action">Добавление препарата</string>
-    <string name="add_list_action">Добавление списка</string>
-    <string name="edit_product_action">Редактирование препарата</string>
-    <string name="edit_list_action">Редактирование списка</string>
+    <string name="add_product_action">Adding medicament</string>
+    <string name="add_list_action">Adding list</string>
+    <string name="edit_product_action">Editing medicament</string>
+    <string name="edit_list_action">Editing list</string>
 
-    <string name="add_product">Добавить препарат</string>
-    <string name="add_list">Добавить список</string>
+    <string name="add_product">Add medicament</string>
+    <string name="add_list">Add list</string>
 </resources>
